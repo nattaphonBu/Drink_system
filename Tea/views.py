@@ -1,9 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .forms import TypeOfItemFrom, AccountForm
 from .models import TypeOfItem, Account
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-
+from django.views.generic import DeleteView
 
 
 def add_typeofitem(request):
@@ -22,19 +22,23 @@ def edit_typeofitem(request, id=None):
         if form.is_valid():
                 form.save()
         return render(request,'typeofitem_form.html', {'form': form})
-def delete_post(request, id):
-        item = get_object_or_404(Post, id=id)
-        if request.method == 'POST':
-                form = TypeOfItemFrom(request.POST, instance=item)
-                item.delete()
-                message.success(request, 'You have successfully')
-        else:
-                form = TypeOfItemFrom(instance=post)
+def delete_account(request, id):
+        item = get_object_or_404(Account, id=id)
+        try:
+                if request.method == 'POST':
+                        form = AccountForm(request.POST, instance=item)
+                        item.delete()
+                        messages.success(request, 'You have successfully')
+                else:
+                        form = AccountForm(instance=item)
+        except Exception as e:
+                messages.warning(request,'Error {}'.format(e))
         context = {
-                'form':form
+                'form':form,
+                'post': item,
         }
-
-
+        return redirect("account_list")
+        # return render(request,'edit_account.html',context)
 def register_account(request):
         if request.method == "POST":
                 form = AccountForm(request.POST)
@@ -105,3 +109,10 @@ def edit_account(request, id=None):
                 'post': post,
         }
         return render(request,template,context)
+
+def delete_accounttest(request, id):
+        item = get_object_or_404(Account, id=id)
+        item.delete()
+                      
+        return redirect("account_list")
+

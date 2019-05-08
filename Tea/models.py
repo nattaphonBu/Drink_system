@@ -29,7 +29,6 @@ status_account=(
 class Account(models.Model):
     username = models.CharField(max_length = 30, blank=False)
     password = models.CharField(max_length = 30, blank=False)
-    status = models.IntegerField(default=0)
     start_datetime = models.DateTimeField('Start Date', null=True, blank=True)
     status_account = models.CharField(max_length=30, choices=status_account, default='Customer')
     def __str__(self):

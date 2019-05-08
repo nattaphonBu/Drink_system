@@ -9,5 +9,6 @@ urlpatterns = [
     url(r'^account/$', views.account_list, name='account_list'),
     # url(r'^delete_acount/(?P<id>\d+)/$', views.delete_post, name='delete_post_Account')
     url(r'^account/edit/(?P<id>\d+)/$', views.edit_account, name='edit_account'),
+    url(r'^account/(?P<id>\d+)/delete', views.delete_accounttest, name='delete_account'),
 ]
 

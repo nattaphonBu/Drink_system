@@ -1,6 +1,6 @@
 
     
-{% extends 'base1.html' %}
+{% extends 'base_edit.html' %}
 
 {% load crispy_forms_tags %}
 
@@ -23,12 +23,6 @@
     
     <button type="submit" class="btn btn-success"> Save</button>
   </form>
-  {% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
+ 
 {% endblock %}
 

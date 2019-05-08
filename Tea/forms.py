@@ -12,4 +12,4 @@ class TypeOfItemFrom(ModelForm):
 class AccountForm(ModelForm):
     class Meta:
         model = Account
-        fields = ['username','password','status','status_account']
+        fields = ['username','password','status_account']
