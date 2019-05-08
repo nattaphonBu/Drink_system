@@ -17,9 +17,9 @@
             <td>{{item.id}}</td>
             <td>{{item.username}}</td>
             <td>{{item.password}}</td>
-            <td>{% ifequal item.status 1 %}Admin {% else %} Customer {% endifequal %}</td>
-            
-            <td><button class="btn btn-warning">Edit</button></td>
+            <td>{{item.status_account}}</td>
+           
+            <td><a href="{% url 'edit_account' id=item.id %}"><button class="btn btn-warning">Edit</button></a></td>
             <td><button class="btn btn-danger">Delete</button></td>
         </tr>
         {% endfor %}

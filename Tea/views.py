@@ -22,8 +22,8 @@ def edit_typeofitem(request, id=None):
         if form.is_valid():
                 form.save()
         return render(request,'typeofitem_form.html', {'form': form})
-def delete_post(request, pk):
-        item = get_object_or_404(Post, pk=pk)
+def delete_post(request, id):
+        item = get_object_or_404(Post, id=id)
         if request.method == 'POST':
                 form = TypeOfItemFrom(request.POST, instance=item)
                 item.delete()
@@ -33,6 +33,7 @@ def delete_post(request, pk):
         context = {
                 'form':form
         }
+
 
 def register_account(request):
         if request.method == "POST":
@@ -53,9 +54,10 @@ def register_account(request):
 def account_list(request):
 
         account = Account.objects.all()
-
         pages = Paginator(account, 5)
+        
         page = request.GET.get('page')
+        # page_range = paginator.get_page(page)
 
         # context = {
         #         'items' : pages[0],
@@ -63,6 +65,43 @@ def account_list(request):
         # }
         context = {
                 "items": account,
-                "title" : "page"
+                "page_range" : pages,
         }
         return render(request,'account_list.html' ,context)
+
+# def delete_post_Account(request, id):
+#         account = AccountForm(request.POST)
+#         if request.method == 'POST':
+#                 form = AccountForm(request.POST, instance=account)
+#                 account.delete()
+#                 messages.success(request,'You have successfully')
+#         else:
+#                 account = AccountForm(instance=account)
+#         context = {
+#                 'form': form,
+#                 'account': account,
+#         }
+#         return render(request,'account_list.html' ,context)
+
+def edit_account(request, id=None):
+        template = 'edit_account.html'
+        post = get_object_or_404(Account, id=id)
+
+        if request.method == "POST":
+                form = AccountForm(request.POST, instance=post)
+
+                try:
+                        if form.is_valid():
+                                form.save()
+                                messages.success(request,"success")
+
+                except Exception as e:
+                        messages.warning(request, 'Error :{}'.format(e))
+        else:
+                form =AccountForm(instance=post)
+
+        context = {
+                'form': form,
+                'post': post,
+        }
+        return render(request,template,context)
