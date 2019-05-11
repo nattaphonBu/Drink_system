@@ -2,19 +2,134 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <title>Django People</title>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
+    <!-- <title>Django People</title> -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Free Bootstrap Themes by Zerotheme dot com - Free Responsive Html5 Templates">
+    <meta name="author" content="https://www.Zerotheme.com">
+	
+    <title>zLoveDesign | Free Bootstrap Template</title>
+	
+    <!-- Bootstrap Core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	
+	<!-- Custom CSS -->
+	<link href="/static/css/style.css" rel="stylesheet">
+	
+	<!-- Animate.css -->
+	<link href="/static/css/animate.css" rel="stylesheet" media="all" type="text/css">
+	
+	<!-- Custom Fonts -->
+    <link href="/static/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	
+	<!-- Owl Carousel Assets -->
+    <link href="/static/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <!-- <link href="owl-carousel/owl.theme.css" rel="stylesheet"> -->
+
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="js/html5shiv.js"></script>
+        <script src="js/respond.min.js"></script>
+    <![endif]-->
+</head>
   </head>
-  <body>
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-8">
-          <h1 class="mt-2">Register</h1>
-          <hr class="mt-0 mb-4">
-          {% block content %}
-          {% endblock %}
+  <body id="page-top" class="index-page">
+    <div class="wrap-body">
+    
+      <!--////////////////////////////////////Header-->
+      <header>
+        <!---Main Header--->
+        <div class="main-header">
+        
+          <!--Navigation-->
+          <nav id="menu" class="navbar">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
+                <a class="navbar-brand" href="#">
+                  <img src="/static/images/logo.png" width="250px"/>
+                </a>
+              </div>
+              <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                  <li class="active"><a href="index.html">Home</a></li>
+                  <li><a href="single.html">About Us</a></li>
+                  <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Category <i class="fa fa-chevron-down"></i></a>
+                    <div class="dropdown-menu" style="margin-left: -203.625px;">
+                      <div class="dropdown-inner">
+                        <ul class="list-unstyled">
+                          <li><a href="archive.html">Text 301</a></li>
+                          <li><a href="archive.html">Text 302</a></li>
+                          <li><a href="archive.html">Text 303</a></li>
+                          <li><a href="archive.html">Text 304</a></li>
+                          <li><a href="archive.html">Text 305</a></li>
+                        </ul>
+                        <ul class="list-unstyled">
+                          <li><a href="archive.html">Text 306</a></li>
+                          <li><a href="archive.html">Text 307</a></li>
+                          <li><a href="archive.html">Text 308</a></li>
+                          <li><a href="archive.html">Text 309</a></li>
+                          <li><a href="archive.html">Text 310</a></li>
+                        </ul>
+                        <ul class="list-unstyled">
+                          <li><a href="archive.html">Text 311</a></li>
+                          <li><a href="archive.html">Text 312</a></li>
+                          <li><a href="archive.html#">Text 313</a></li>
+                          <li><a href="archive.html#">Text 314</a></li>
+                          <li><a href="archive.html">Text 315</a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </li>
+                  <li><a href="archive.html">Blog</a></li>
+                  <li><a href="contact.html">Contact</a></li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          
+          <!-- Static Header -->
+          <div class="header-text">
+            <div class="header-text-inner">
+              <h1>We Love Design</h1>
+              <p>Lorem ipsum dolor sit amet adipisicing</p>
+            </div>
+          </div><!-- /header-text -->
+          <!---Scroller--->
+          <div id="scroll-page-content">
+            <a href="#page-content" class="scroller">
+              <div class="scroller-button">
+                <i class="fa fa-angle-down"></i>
+              </div>
+            </a>
+          </div>
         </div>
-      </div>
+      </header>
+      <!-- /Section: intro -->
+      {% block content %}
+      {% endblock %}
+    
+      
+      <!-- Footer -->
+      <div id="page-top"><a href="#page-top" class="btn btn-toTop"><i class="fa fa-angle-double-up"></i></a></div>
+      
+      <!-- ========== Scripts ========== -->
+      <script src="/static/js/jquery-3.1.1.min.js"></script>
+      <script src="/static/js/bootstrap.min.js"></script>
+      <script src="/static/js/jquery.localScroll.min.js"></script>
+      <script src="/static/js/jquery.scrollTo.min.js"></script>
+      <script src="/static/js/SmoothScroll.js"></script>
+      <script src="/static/js/wow.min.js"></script>
+      
+      <!-- Owl Carousel JS -->
+      <script src="/static/owl-carousel/owl.carousel.js"></script>
+      
+      <!-- Definity JS -->
+      <script src="/static/js/main.js"></script>
+      
     </div>
-  </body>
-</html>
+    </body>
+  

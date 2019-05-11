@@ -1,6 +1,6 @@
 
     
-{% extends 'base1.html' %}
+{% extends 'base_login.html' %}
 
 {% load crispy_forms_tags %}
 
@@ -9,19 +9,8 @@
 {% block content %}
   <form method="post" novalidate>
     {% csrf_token %}
-    <div class="row">
-      <div class="col-12">
-        {{ form.username|as_crispy_field }}
-      </div>
-      <div class="col-12">
-        {{ form.password|as_crispy_field }}
-      </div>
-      <div class="col-12">
-        {{ form.status_account|as_crispy_field }}
-      </div>
-    </div>
-    
-    <button type="submit" class="btn btn-success"> Save</button>
+   <center>{{ form.as_p}}</center>
+   <center><button type="submit" class="btn btn-success btn-lg col-5"> บันทึก</button></center>
   </form>
   {% if messages %}
 <ul class="messages">

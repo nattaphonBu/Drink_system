@@ -1,0 +1,33 @@
+
+    
+{% extends 'base2.html' %}
+
+{% load crispy_forms_tags %}
+
+**people/person_form.html**
+
+{% block content %}
+  <form method="post" novalidate>
+    {% csrf_token %}
+    <center><h1>เพิ่มข้อมูลเครื่องดื่ม</h1></center>
+    <center>
+        ชื่อเครื่องดื่ม
+      {{ form.drinkname }}
+    </center>
+    
+    <center>
+        ราคา
+      {{ form.price}}
+    </center>
+    <br>
+    <center><button type="submit" class="btn btn-primary btn-md col-5"> บันทึก</button></center>
+  </form>
+  {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
+

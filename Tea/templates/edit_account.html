@@ -1,6 +1,6 @@
 
     
-{% extends 'base_edit.html' %}
+{% extends 'base2.html' %}
 
 {% load crispy_forms_tags %}
 
@@ -9,19 +9,10 @@
 {% block content %}
   <form method="post" novalidate>
     {% csrf_token %}
-    <div class="row">
-      <div class="col-12">
-        {{ form.username|as_crispy_field }}
-      </div>
-      <div class="col-12">
-        {{ form.password|as_crispy_field }}
-      </div>
-      <div class="col-12">
-        {{ form.status_account|as_crispy_field }}
-      </div>
-    </div>
-    
-    <button type="submit" class="btn btn-success"> Save</button>
+        
+    <center>{{form}}</center>
+    <br>
+    <center><button type="submit" class="btn btn-warning btn-md col-5"> บันทึก</button></center>
   </form>
  
 {% endblock %}

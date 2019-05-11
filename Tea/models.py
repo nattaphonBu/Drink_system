@@ -5,7 +5,6 @@ class TypeOfItem(models.Model):
     name = models.CharField(max_length=255, blank=True, default='')
     description = models.TextField(default='', blank=True)
     price = models.IntegerField(default=0)
-    create_at = models.DateTimeField('Start Date', null=True, blank=True)
     # create_by = models.ForeignKey(Account, on_delete = models.CASCADE)
     def __str__(self):
         return '%s' % self.name
@@ -13,8 +12,7 @@ class TypeOfItem(models.Model):
 class Tea(models.Model):
     drinkname = models.CharField(max_length=255)
     price = models.FloatField(default=0)
-    types = models.ForeignKey(TypeOfItem, on_delete = models.CASCADE)
-    create_at = models.DateTimeField('Start Date', null=True, blank=True)
+    # types = models.ForeignKey(TypeOfItem, on_delete = models.CASCADE)
     # create_by = models.ForeignKey(Account, on_delete = models.CASCADE)
     def __str__(self):
         return '%s' % self.drinkname
@@ -29,7 +27,8 @@ status_account=(
 class Account(models.Model):
     username = models.CharField(max_length = 30, blank=False)
     password = models.CharField(max_length = 30, blank=False)
-    start_datetime = models.DateTimeField('Start Date', null=True, blank=True)
+    name = models.CharField(max_length = 50, blank=False, )
+    tell = models.CharField(max_length = 10, blank=False, )
     status_account = models.CharField(max_length=30, choices=status_account, default='Customer')
     def __str__(self):
         return '%s' % self.username
