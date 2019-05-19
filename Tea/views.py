@@ -12,22 +12,6 @@ from django.contrib.admin.views.decorators import staff_member_required
 
 from django import template
 
-def add_typeofitem(request):
-        if request.method == "POST":
-                form = TypeOfItemFrom(request.POST)
-                if form.is_valid():
-                        name = form.save(commit=False)
-                        name.save()
-        else:
-                form = TypeOfItemFrom()
-        return render(request, 'typeofitem_form.html', {'form':form})
-
-def edit_typeofitem(request, id=None):
-        item =  get_object_or_404(TypeOfItem, id=id)
-        form =TypeOfItemFrom(request.POST or None, instance=item)
-        if form.is_valid():
-                form.save()
-        return render(request,'typeofitem_form.html', {'form': form})
 def delete_account(request, id):
         item = get_object_or_404(Account, id=id)
         try:
@@ -93,8 +77,10 @@ def edit_account(request, id=None):
                 try:
                         if form.is_valid():
                                 form.save()
-                                messages.success(request,"Edit Account Success!")
+                                messages.success(request,"แก้ไขข้อมูลสำเร็จ!")
                                 return redirect("account_list1")
+                        else:
+                                messages.error(request,"แก้ไขข้อมูลไม่าำเร็จ" )
 
                 except Exception as e:
                         messages.warning(request, 'Error :{}'.format(e))
@@ -122,13 +108,17 @@ def add_Drinking(request):
                 form = DrinkingForm(request.POST)
                 try:
                         if form.is_valid():
+                                print(form.cleaned_data)
                                 tea = form.save(commit=False)
                                 tea.save()
-                                messages.success(request,"Add Drinking Success!!")
+                                messages.success(request,"เพิ่มเครื่องดื่มสำเร็จ!!")
                                 return redirect('drink_list')
+                        else:
+                                messages.error(request,"เพิ่มเครื่องดื่มไม่สำเร็จสำเร็จ!!")
                 except Exception as e:
                         messages.warning(request, 'Error :{}'.format(e))
         else:
+                
                 form = DrinkingForm()
         return render(request,"add_drink.html",{'form': form})
 @login_required(login_url='/login1/')
@@ -143,12 +133,13 @@ def edit_Drinking(request, id=None):
                 try:
                         if form.is_valid():
                                 form.save()
-                                messages.success(request,"Edit Drinking Success!")
+                                messages.success(request,"แก้ไขเครื่องดื่มสำเร็จ!")
                                 return redirect("drink_list")
 
                 except Exception as e:
                         messages.warning(request, 'Error :{}'.format(e))
         else:
+                messages.error(request,"แก้ไขเครื่องดื่มไม่สำเร็จสำเร็จ!!")
                 form = DrinkingForm(instance=post)
 
         context = {
@@ -181,7 +172,7 @@ def drink_list(request):
 def delete_drinking(request, id):
         item = get_object_or_404(Tea, id=id , )
         item.delete()
-        messages.success(request, 'Delete Success!!')              
+        messages.success(request, 'ลบข้อมูลสำเร็จ!!')              
         return redirect("drink_list")
 
 
@@ -190,10 +181,10 @@ def register_account_Auth(request):
                 form = UserCreationForm(request.POST)
                 if form.is_valid():
                         form.save()
-                        messages.success(request, 'Register Success!!')  
+                        messages.success(request, 'สมัครสมาชิกสำเร็จ!!')  
                         return redirect("login_view")        
         else:
-                messages.success(request, 'Register not Success!!')  
+                messages.success(request, 'สมัครสมาชิกไม่สำเร็จ!!')  
                 form = UserCreationForm()
                 # return redirect("drink_list")  
         return render(request, 'register_form.html', {'form':form})
@@ -216,7 +207,7 @@ def login_view(request):
                         user = form.get_user()
                         if user.is_superuser == 1:
                                 login(request,user) 
-                                messages.info(request, "ลงชือเข้าใช้สำเร็จ")          
+                                messages.success(request, "ลงชือเข้าใช้สำเร็จ")          
                                 return redirect("drink_list")
                         else:
                                 messages.info(request, "คูณยังไม่ได้รับอนุญาติให้เข้าสู่ระบบ")

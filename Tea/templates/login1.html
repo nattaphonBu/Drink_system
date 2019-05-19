@@ -3,9 +3,6 @@
 {% extends 'base_login.html' %}
 
 {% load crispy_forms_tags %}
-
-**people/person_form.html**
-
 {% block content %}
   <form method="post" novalidate>
     {% csrf_token %}
@@ -13,8 +10,7 @@
     <br>
 <center>{{form}}</center>
     <br>
-    <center><button type="submit" class="btn btn-success btn-md col-2"> ลงชื่อเข้าใช้</button></center>
-    
+    <center><button type="submit" class="btn btn-success btn-md col-2" > ลงชื่อเข้าใช้</button></center>
   </form>
   {% if messages %}
 <ul class="messages">

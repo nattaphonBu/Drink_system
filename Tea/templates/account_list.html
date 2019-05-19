@@ -16,7 +16,7 @@
             <th scope="col">ชื่อบัญชีผู้ใช้</th>
             <th scope="col">ชื่อผู้ใช้</th>
             <th scope="col">นามสกุล</th>
-            <!-- <th scope="col">Status</th> -->
+            <th scope="col">อีเมลล์</th>
             <th scope="col">แก้ไขข้อมูล</th>
             <th scope="col">ลบข้อมูล</th>
         </tr>
@@ -28,7 +28,7 @@
             <td>{{item.username}}</td>
             <td>{{item.first_name}}</td>
             <td>{{item.last_name}}</td>
-            <!-- <td>{{item.status_account}}</td> -->
+            <td>{{item.email}}</td>
            
             <td><a href="{% url 'edit_account' id=item.id  %}"><button class="btn btn-warning">แก้ไขข้อมูล</button></a></td>
             <td><a href="{% url 'delete_account' id=item.id %}"><button class="btn btn-danger">ลบข้อมูล</button></a></td>

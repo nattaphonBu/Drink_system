@@ -1,12 +1,16 @@
 
     
 {% extends 'base2.html' %}
-
 {% load crispy_forms_tags %}
-
-**people/person_form.html**
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 {% block content %}
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
   <form method="post" novalidate>
     {% csrf_token %}
     <center><h1>แก้ไขข้อมูลเครื่องดื่ม</h1></center>
@@ -22,12 +26,6 @@
     <br>
     <center><button type="submit" class="btn btn-warning btn-md col-5"> บันทึก</button></center>
   </form>
-  {% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
+  
 {% endblock %}
 

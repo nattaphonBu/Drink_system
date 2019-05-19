@@ -12,12 +12,6 @@
    <center>{{ form.as_p}}</center>
    <center><button type="submit" class="btn btn-success btn-lg col-5"> บันทึก</button></center>
   </form>
-  {% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
 {% endif %}
 {% endblock %}
 
