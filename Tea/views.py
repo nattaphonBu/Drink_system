@@ -231,6 +231,6 @@ def account_list1(request):
 
 def logout_request(request):
         logout(request)
-        # messages.info(request, "ลงชื่อออกสำเร็จ")
+        messages.success(request, "ลงชือออกสำเร็จ") 
         return redirect("login_view")
         
