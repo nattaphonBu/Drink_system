@@ -18,7 +18,7 @@ def delete_account(request, id):
                 if request.method == 'POST':
                         form = AccountForm(request.POST, instance=item)
                         item.delete()
-                        messages.success(request, 'You have successfully')
+                        messages.success(request, 'ลบบัญชีผู้ใช้สำเร็จ')
                 else:
                         form = AccountForm(instance=item)
         except Exception as e:
@@ -184,7 +184,7 @@ def register_account_Auth(request):
                         messages.success(request, 'สมัครสมาชิกสำเร็จ!!')  
                         return redirect("login_view")        
         else:
-                messages.success(request, 'สมัครสมาชิกไม่สำเร็จ!!')  
+                # messages.error(request, 'สมัครสมาชิกไม่สำเร็จ!!')  
                 form = UserCreationForm()
                 # return redirect("drink_list")  
         return render(request, 'register_form.html', {'form':form})
@@ -207,7 +207,7 @@ def login_view(request):
                         user = form.get_user()
                         if user.is_superuser == 1:
                                 login(request,user) 
-                                messages.success(request, "ลงชือเข้าใช้สำเร็จ")          
+                                messages.success(request, "ลงชือเข้าใช้สำเร็จ ยินดีต้อนรับ "+user.username)          
                                 return redirect("drink_list")
                         else:
                                 messages.info(request, "คูณยังไม่ได้รับอนุญาติให้เข้าสู่ระบบ")
